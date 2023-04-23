@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>{{ meta.page_title }}</title>
+<style>
+    body {
+        font-family: sans-serif;
+        margin: 0;
+        color: #ddd;
+        background-color: #36393f;
+        line-height: 1.2;
+    }
+    a {
+        color: #ddd;
+    }
+    h1 {
+        margin: 0;
+    }
+    .container {
+        margin: auto;
+        max-width: 900px;
+        padding: 10px;
+    }
+    .header {
+        padding: 10px;
+    }
+    .videos {
+        padding: 10px;
+        flex-direction: column;
+    }
+    .video {
+        display: grid;
+        grid-gap: 16px;
+        grid-template-columns: auto 1fr;
+        margin-bottom: 20px;
+        max-height: 150px;
+        align-items: start;
+    }
+    .title {
+        font-size: 16px;
+        text-decoration: none;
+    }
+    .info {
+        font-size: 14px;
+    }
+    .thumb {
+        position: relative;
+        display: flex;
+    }
+
+    .duration {
+        font-size: 14px;
+
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        padding: 4px 5px;
+        border-radius: 4px;
+        color: white;
+        background: rgba(20,20,20,.85);
+        pointer-events: none;
+        line-height: 1;
+    }
+    img {
+        background: black;
+        width: 160px;
+        height: 90px;
+    }
+    @media screen and (min-width: 500px) {
+        img {
+            width: 240px;
+            height: 135px;
+        }
+        .title {
+            font-size: 24px;
+        }
+    }
+    @font-face {
+        font-family: "Bariol";
+        src: url(/bariol.woff)
+    }
+</style>
+</head>
+
+<body>
+<div class="container">
+<div class="header">
+<h1>{{ meta.page_title }}</h1>
+<span>{{ meta.page_info }}</span>
+</div>
+
+<div class="videos">
+{% for item in items %}
+<div class="video">
+        <div class="thumb">
+            <a href="{{ item.file }}">
+                <img src="{{ item.thumb }}" width="160px" height="90px">
+            </a>
+            <span class="duration">{{ item.duration }}</span>
+        </div>
+        <div class="info">
+            <div>
+                <a class="title" href="{{ item.file }}">
+                    <span>{{ item.title }}</span>
+                </a>
+            </div>
+            <div>
+                <span>{{ item.info }}</span>
+            </div>
+        </div>
+</div>
+{% endfor %}
+</div>
+</div>
+
+</body>
+</html>
