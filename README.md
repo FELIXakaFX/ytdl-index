@@ -27,6 +27,23 @@
 
     ./run.py .
 
+## More examples
+
+#### Sort videos by date (descending)
+
+    ./run.py --sort date .
+
+#### Sort videos by title (ascending, natsort)
+
+    ./run.py --sort +title --natsort .
+
+#### Sort videos by playlist position (ascending)
+
+    ./run.py --sort +index .
+
+#### Show all videos, generate thumbnails, sort by mtime, show mtime and size
+
+    ./run.py --show-all --gen-thumb --sort mtime --info mtime,size
 
 ## Usage
 
