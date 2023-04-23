@@ -4,6 +4,8 @@
 
 *Generates index.html's for your downloaded videos.*
 
+<img src="https://user-images.githubusercontent.com/18424307/233848077-a7caf2e2-5aab-44ef-87cd-a5c2c5dea395.png" width="75%">
+
 </div>
 
 ## Installing
