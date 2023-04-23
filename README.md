@@ -31,7 +31,7 @@
 ## Usage
 
 ```
-usage: run.py [-h] [-s SORT] [-n] [-t TITLE] [-i INFO] [-p PAGE_INFO] [-d DATE_FORMAT] [-a] [-v] [directory ...]
+usage: run.py [-h] [-s SORT] [-n] [-t TITLE] [-i INFO] [-p PAGE_INFO] [-d DATE_FORMAT] [-a] [-g] [-v] [directory ...]
 
 Generate directory listing for files downloaded using youtube-dl / yt-dlp.
 
@@ -49,7 +49,8 @@ optional arguments:
                         comma separated list of fields to show below main title (available: (v)ideos, (s)ize, (d)ate)
   -d DATE_FORMAT, --date-format DATE_FORMAT
                         date format to use
-  -a, --show-all
+  -a, --show-all        show all videos (including ones without info json)
+  -g, --gen-thumb       generate thumbnails for videos
   -v, --verbose
 
 available fields: t = title, u = uploader, v = views, d = date, m = mtime, s = size, l = length, i = index, e = extension

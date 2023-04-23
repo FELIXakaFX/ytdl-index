@@ -49,6 +49,10 @@ parser.add_argument('-d', '--date-format',
                     help="date format to use",
                     default="%d.%m.%Y")
 parser.add_argument('-a', '--show-all',
+                    help="show all videos (including ones without info json)",
+                    action='store_true')
+parser.add_argument('-g', '--gen-thumb',
+                    help="generate thumbnails for videos",
                     action='store_true')
 parser.add_argument('-v', '--verbose',
                     action='store_true')
@@ -87,6 +91,16 @@ def get_duration(filename):
     except:
         return 0
 
+def generate_thumbnail(filename, thumbnail):
+    import subprocess
+    try:
+        subprocess.run(
+            f'ffmpeg -i "{filename}" -vframes 1 "{thumbnail}"',
+            shell=True)
+        return thumbnail
+    except:
+        return None
+
 def format_duration(duration):
     h = duration // 3600
     m = duration // 60 % 60
@@ -110,6 +124,7 @@ page_info_fields = args.page_info.split(',')
 
 date_format = args.date_format
 show_all = args.show_all
+gen_thumb = args.gen_thumb
 natsort = args.natsort
 verbose = args.verbose
 
@@ -165,6 +180,9 @@ for media_dir in args.directory:
                 if os.path.isfile(t):
                     thumb=t
                     break
+
+            if not thumb and gen_thumb:
+                thumb = generate_thumbnail(file, base + '.jpg')
 
             try:
                 with open(base + '.info.json', 'r') as f:
