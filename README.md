@@ -12,7 +12,7 @@
 
 #### Clone repository and install requirements
 
-    git clone ...
+    git clone https://github.com/FelixKohlhas/ytdl-index
     cd ytdl-index
     pip3 install -r requirements.txt
 
